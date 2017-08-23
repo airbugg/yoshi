@@ -12,11 +12,14 @@ const config = {
 
   resolve: {
     modules: [
+      // resolve path to absolute for linked modules with peerDependencies
+      path.resolve('node_modules'),
       'node_modules',
       context
     ],
 
-    extensions: ['.ts', '.js', '.tsx', '.jsx']
+    extensions: ['.ts', '.js', '.tsx', '.jsx'],
+    symlinks: projectConfig.symlinks()
   },
 
   resolveLoader: {

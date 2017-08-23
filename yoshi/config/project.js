@@ -55,7 +55,8 @@ module.exports = {
     return externalRegexList.some(regex => regex.test(path)) ||
       allSourcesButExternalModules(path);
   },
-  jestConfig: () => _.get(packagejson, 'jest', {})
+  jestConfig: () => _.get(packagejson, 'jest', {}),
+  symlinks: () => _.get(packagejson, 'symlinks', true)
 };
 
 function getConfig(key, defaultVal = false) {
