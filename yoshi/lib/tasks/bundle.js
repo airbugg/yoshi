@@ -24,23 +24,22 @@ function runBundle(webpackOptions) {
   });
 }
 
-function toMinExt(filePath) {
-  return filePath.replace(/(.+\.)(js|css)$/, '$1min.$2');
+function omitMinExt(filePath) {
+  return filePath.replace(/(.+\.)min\.(js|css)$/, '$1min.$2');
 }
 
-function copyFilesAsMin() {
+function copyFilesAsDebug() {
   const promises = readDir(`${statics()}/**/*.+(js|css)`)
-    .map(filePath => copyFile(filePath, toMinExt(filePath)));
+    .map(filePath => copyFile(filePath, omitMinExt(filePath)));
 
   return Promise.all(promises);
 }
 
 function bundle({analyze}) {
+  const minBundle = runBundle({debug: false, analyze});
+  const debugBundle = inTeamCity() ? runBundle({debug: true}) : minBundle.then(copyFilesAsDebug);
 
-  const debugBundle = runBundle({debug: true, analyze});
-  const minBundle = inTeamCity() ? runBundle({debug: false}) : debugBundle.then(copyFilesAsMin);
-
-  return Promise.all([debugBundle, minBundle]);
+  return Promise.all([minBundle, debugBundle]);
 }
 
 module.exports = ({logIf}) => {

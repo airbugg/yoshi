@@ -582,7 +582,7 @@ describe('Aggregator: Build', () => {
       expect(test.list('dist/statics')).to.contain('app.bundle.js');
     });
 
-    it('should generate a minified bundle on ci', () => {
+    it('should generate a debug bundle on ci', () => {
       const res = test
         .setup({
           'src/client.js': `const aFunction = require('./dep');const a = aFunction(1);`,
@@ -630,7 +630,7 @@ describe('Aggregator: Build', () => {
       expect(test.list('dist/statics')).not.to.contain('app.bundle.js');
     });
 
-    it('should not generate a minified version and instead copy the normal bundle inside of TeamCity', () => {
+    it('should not generate a debug version and instead copy the minified bundle outside of TeamCity', () => {
       const res = test
         .setup({
           'src/client.js': `const aFunction = require('./dep');const a = aFunction(1);`,
@@ -644,7 +644,7 @@ describe('Aggregator: Build', () => {
       expect(test.content('dist/statics/app.bundle.js')).to.eql(test.content('dist/statics/app.bundle.min.js'));
     });
 
-    it('should generate a minified version inside of TeamCity', () => {
+    it('should generate a debug version inside of TeamCity', () => {
       const res = test
         .setup({
           'src/client.js': `const aFunction = require('./dep');const a = aFunction(1);`,
@@ -1012,7 +1012,7 @@ describe('Aggregator: Build', () => {
         expect(test.content(`dist/${defaultOutput}/app.css`)).to.match(/display: flex;/g);
       });
 
-      it('should generate separated minified Css from bundle on ci', () => {
+      it('should generate separated debug css from bundle on ci', () => {
         const res = test
           .setup({
             'src/client.js': 'require(\'./style.scss\');',
