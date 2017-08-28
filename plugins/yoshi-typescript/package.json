@@ -27,7 +27,7 @@
     "mocha-env-reporter": "~2.0.4",
     "strip-ansi": "~4.0.0",
     "test-phases": "latest",
-    "typescript": "^2.3.0",
+    "typescript": "~2.3.0",
     "wnpm-ci": "latest"
   },
   "peerDependencies" : {
