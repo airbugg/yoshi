@@ -15,8 +15,7 @@
     "chalk": "~2.0.1",
     "cross-spawn": "~5.1.0",
     "lodash.flowright": "^3.5.0",
-    "lodash.topairs": "^4.3.0",
-    "typescript": "~2.3.0"
+    "lodash.topairs": "^4.3.0"
   },
   "devDependencies": {
     "chai": "~3.5.0",
@@ -29,6 +28,9 @@
     "strip-ansi": "~4.0.0",
     "test-phases": "latest",
     "wnpm-ci": "latest"
+  },
+  "peerDependencies" : {
+    "typescript": "^2.3.0"
   },
   "eslintConfig": {
     "extends": "wix"
