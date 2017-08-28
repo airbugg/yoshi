@@ -157,6 +157,20 @@ describe('Aggregator: e2e', () => {
     expect(res.stdout).to.contain('1 spec, 0 failures');
   });
 
+  it('should extend project\'s afterLaunch', function () {
+    this.timeout(60000);
+    const res = test
+      .setup({
+        'dist/test/some.e2e.js': `it('some test', () => {})`,
+        'package.json': fx.packageJson(),
+        'protractor.conf.js': fx.protractorConfWithAfterLaunch()
+      }, [hooks.installProtractor])
+      .execute('test', ['--protractor'], outsideTeamCity);
+
+    expect(res.code).to.equal(0);
+    expect(res.stdout).to.contain('afterLaunch hook');
+  });
+
   function cdnConfigurations() {
     return {
       servers: {

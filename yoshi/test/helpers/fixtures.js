@@ -81,6 +81,18 @@ const fx = {
       }
     };
   `,
+  protractorConfWithAfterLaunch: ({framework} = {}) => `
+    exports.config = {
+      specs: ["dist/test/**/*.e2e.js"],
+      framework: "${framework || 'jasmine'}",
+      afterLaunch: () => {
+        return new Promise(resolve => setTimeout(() => {
+          console.log('afterLaunch hook');
+          resolve();
+        }))
+      },
+    };
+  `,
   protractorConf: ({framework, cdnPort} = {}) => `
     const http = require("http");
     exports.config = {

@@ -84,7 +84,7 @@ const merged = ld.mergeWith({
     if (cdnServer) {
       cdnServer.close();
     }
-    afterLaunch(merged);
+    return afterLaunch.call(merged);
   },
   mochaOpts: {
     timeout: 30000
