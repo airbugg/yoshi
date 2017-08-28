@@ -149,7 +149,7 @@ describe('Aggregator: e2e', () => {
   it('should extend project\'s beforeLaunch', function () {
     this.timeout(60000);
     const res = test
-    .setup(singleModuleWithBeforLaunch(), [hooks.installProtractor])
+    .setup(singleModuleWithBeforeLaunch(), [hooks.installProtractor])
     .execute('test', ['--protractor'], outsideTeamCity);
 
     expect(res.code).to.equal(0);
@@ -261,7 +261,7 @@ describe('Aggregator: e2e', () => {
     };
   }
 
-  function singleModuleWithBeforLaunch() {
+  function singleModuleWithBeforeLaunch() {
     return Object.assign(singleModuleWithJasmine(), {
       'protractor.conf.js': fx.protractorConfWithBeforeLaunch()
     });
