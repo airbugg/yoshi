@@ -137,7 +137,6 @@
     "tslint": "~5.5.0",
     "tslint-config-wix": "~1.0.23",
     "turnerjs": "~1.0.256",
-    "typescript": "~2.3.0",
     "update-notifier": "~2.2.0",
     "url-loader": "~0.5.9",
     "velocity": "~0.7.2",
