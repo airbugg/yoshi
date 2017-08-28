@@ -43,9 +43,6 @@ const merged = ld.mergeWith({
   beforeLaunch: () => {
     const rootDir = './src';
     wixCssModulesRequireHook(rootDir, {
-      generateScopedName: cssModulesPattren(),
-      hashPrefix: projectConfig.name(),
-
       preprocessCss: (data, file) => sass.renderSync({
         data,
         file,
