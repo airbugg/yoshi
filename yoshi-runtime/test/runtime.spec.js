@@ -60,6 +60,29 @@ describe('CSS modules runtime', () => {
     myTest.teardown();
   });
 
+  it('should allow custom config', () => {
+    mockEnvironment({production: true});
+    const hash = generateCssModulesPattern('class-name', 'styles/my-file.css');
+    const expectedCssMap = `{ 'class-name': '${hash}' }\n`;
+    const myTest = create('dist/src/index');
+    const res = myTest
+      .setup({
+        'dist/src/index.js': `const {wixCssModulesRequireHook} = require('${require.resolve('../index')}');
+          wixCssModulesRequireHook('./dist/src', {
+            camelCase: false
+          });
+          const s = require('./styles/my-file.css')
+          console.log(s);
+        `,
+        'dist/src/styles/my-file.css': `.class-name {color: red;}`,
+        'package.json': '{"name": "pkg"}'
+      })
+      .execute('');
+    expect(res.code).to.equal(0);
+    expect(res.stdout).to.equal(expectedCssMap);
+    myTest.teardown();
+  });
+
   it('should generate css modules with default rootDir', () => {
     mockEnvironment({production: true});
     const hash = generateCssModulesPattern('a', 'styles/my-file.css');

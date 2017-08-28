@@ -20,7 +20,7 @@ describe('ESLint', () => {
   beforeEach(() => task = opts => eslint(Object.assign({
     base: () => 'src',
     logIf: a => a
-  }, opts))());
+  }))(opts));
 
   afterEach(() => test.teardown());
   afterEach(() => stdout = '');
@@ -57,6 +57,21 @@ describe('ESLint', () => {
   });
 
   it('should pass with exit code 0', () => {
+    setup({'src/a.js': `parseInt('1', 10);`});
+
+    return mustFulfill(task());
+  });
+
+  it('should fix linting errors and exit with exit code 0 if there are only fixable errors', () => {
+    setup({
+      'src/a.js': '/*eslint no-regex-spaces: "error"*/\nnew RegExp("foo  bar");'
+    });
+    return mustFulfill(task({fix: true})).then(() => {
+      expect(test.content('src/a.js')).to.equal('/*eslint no-regex-spaces: "error"*/\nnew RegExp("foo {2}bar");');
+    });
+  });
+
+  it('should pass with exit code 0 and fix the relevant errors', () => {
     setup({'src/a.js': `parseInt('1', 10);`});
 
     return mustFulfill(task());

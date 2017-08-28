@@ -2,7 +2,7 @@
 
 const path = require('path');
 const _ = require('lodash');
-const packagejson = require(path.resolve('package.json'));
+const packagejson = require('./get-project-pkg');
 const globs = require('../lib/globs');
 
 const config = packagejson.yoshi || {};
@@ -46,6 +46,7 @@ module.exports = {
   separateCss: () => getConfig('separateCss', true),
   cssModules: () => getConfig('cssModules', true),
   tpaStyle: () => getConfig('tpaStyle', false),
+  features: () => getConfig('features', {}),
   externals: () => getConfig('externals', []),
   babel: () => _.get(packagejson, 'babel'),
   runIndividualTranspiler: () => getConfig('runIndividualTranspiler', true),

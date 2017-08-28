@@ -55,6 +55,15 @@ describe('Aggregator: Lint', () => {
       expect(res.code).to.equal(1);
       expect(res.stdout).to.contain('1:1  error  Missing radix parameter  radix');
     });
+
+    it('should fix linting errors and exit with exit code 0 if there are only fixable errors', () => {
+      const res = setup({
+        'app/a.js': '/*eslint no-regex-spaces: "error"*/\nnew RegExp("foo  bar");'
+      }).execute('lint', ['--fix']);
+
+      expect(res.code).to.equal(0);
+      expect(test.content('app/a.js')).to.equal('/*eslint no-regex-spaces: "error"*/\nnew RegExp("foo {2}bar");');
+    });
   });
 
   describe('yoshi-stylelint', () => {

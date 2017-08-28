@@ -365,7 +365,7 @@ describe('Loaders', () => {
       beforeEach(() => setupAndBuild());
 
       it('should run stylable loader over imported .st.css files', () => {
-        expect(test.content('dist/statics/app.bundle.js')).to.match(/".Test.*some-rule {\\n\s*?color: red\\n}"/);
+        expect(test.content('dist/statics/app.bundle.js')).to.match(/.Test.*some-rule {\s*?color: red;\s*?}/);
       });
     });
 

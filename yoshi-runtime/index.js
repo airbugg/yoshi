@@ -12,8 +12,8 @@ const isLongCSSFT = process.env.LONG_CSS_PATTERN === 'true';
 const cssModulesPattren = module.exports.cssModulesPattren = () =>
   ((isProduction() || isCI()) && !isLongCSSFT) ? patterns.short : patterns.long;
 
-module.exports.wixCssModulesRequireHook = (rootDir = './dist/src') => {
-  require('css-modules-require-hook')({
+module.exports.wixCssModulesRequireHook = (rootDir = './dist/src', customConfig = {}) => {
+  require('css-modules-require-hook')(Object.assign({
     rootDir,
     generateScopedName: (name, filepath) => {
       let context = rootDir;
@@ -26,5 +26,5 @@ module.exports.wixCssModulesRequireHook = (rootDir = './dist/src') => {
     },
     extensions: ['.scss', '.css', '.less', '.sass'],
     camelCase: true
-  });
+  }, customConfig));
 };

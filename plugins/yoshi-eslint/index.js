@@ -6,14 +6,15 @@ const {readDir, logIfAny} = require('./utils');
 module.exports = ({logIf, base}) => {
   const files = ['*.js', `${base()}/**/*.js`];
 
-  function eslint() {
-    return Promise.resolve().then(() => {
-      const cli = new CLIEngine({cache: true, cacheLocation: 'target/.eslintcache'});
-      const results = cli.executeOnFiles(files).results;
+  function eslint({fix} = {fix: false}) {
+    return new Promise((resolve, reject) => {
+      const cli = new CLIEngine({cache: true, cacheLocation: 'target/.eslintcache', fix});
+      const report = cli.executeOnFiles(files);
+      fix && CLIEngine.outputFixes(report);
       const formatter = cli.getFormatter();
-      const errors = CLIEngine.getErrorResults(results);
-      logIfAny(formatter(results));
-      return errors.length && Promise.reject();
+      logIfAny(formatter(report.results));
+      const errors = CLIEngine.getErrorResults(report.results);
+      return errors.length ? reject() : resolve();
     });
   }
 
