@@ -10,6 +10,7 @@ const {start} = require('../server-api');
 
 function webpackDevServer() {
   const webpackConfig = getConfig({debug: true, disableModuleConcatenation: true});
+  const webpackConfig2 = getConfig({debug: false, disableModuleConcatenation: true});
 
   let middlewares = [];
 
@@ -18,7 +19,7 @@ function webpackDevServer() {
     webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
     webpackConfig.output.publicPath = servers.cdn.url();
 
-    const bundler = filterNoise(webpack(webpackConfig));
+    const bundler = filterNoise(webpack([webpackConfig, webpackConfig2]));
 
     middlewares = [
       webpackDevMiddleware(bundler, {quiet: true}),
