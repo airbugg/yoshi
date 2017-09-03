@@ -21,7 +21,7 @@
     "mocha-env-reporter": "~2.0.4",
     "proxyquire": "~1.8.0",
     "strip-ansi": "~4.0.0",
-    "test-phases": "latest",
+    "test-phases": "~1.0.0",
     "wnpm-ci": "latest"
   },
   "eslintConfig": {

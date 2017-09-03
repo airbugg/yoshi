@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "chalk": "~2.0.1",
-    "generator-yoshi-fullstack": "latest",
-    "generator-yoshi-web": "latest",
+    "generator-yoshi-fullstack": "~1.0.0",
+    "generator-yoshi-web": "~1.0.0",
     "inquirer-npm-name": "~2.0.0",
     "lodash": "~4.17.4",
     "update-notifier": "~2.2.0",

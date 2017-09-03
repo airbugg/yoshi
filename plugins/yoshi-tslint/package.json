@@ -23,11 +23,11 @@
     "mocha": "~3.4.2",
     "mocha-env-reporter": "~2.0.4",
     "strip-ansi": "~4.0.0",
-    "test-phases": "latest",
+    "test-phases": "~1.0.0",
     "typescript": "~2.3.0",
     "wnpm-ci": "latest"
   },
-  "peerDependencies" : {
+  "peerDependencies": {
     "typescript": "^2.3.0"
   },
   "eslintConfig": {

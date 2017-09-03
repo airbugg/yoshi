@@ -20,7 +20,7 @@
     "mocha": "~3.4.2",
     "mocha-env-reporter": "~2.0.4",
     "mockery": "~2.1.0",
-    "test-phases": "^1.0.9",
+    "test-phases": "~1.0.0",
     "wnpm-ci": "latest"
   },
   "eslintConfig": {
@@ -29,6 +29,6 @@
   "dependencies": {
     "css-modules-require-hook": "~4.0.6",
     "generic-names": "~1.0.2",
-    "yoshi-utils": "^1.0.0"
+    "yoshi-utils": "~1.0.0"
   }
 }

@@ -37,7 +37,8 @@ module.exports = {
   servers: {
     cdn: {
       port: () => getConfig('servers.cdn.port', 3200),
-      url: () => getConfig('servers.cdn.url', `//localhost:${module.exports.servers.cdn.port()}/`)
+      url: () => getConfig('servers.cdn.url', `//localhost:${module.exports.servers.cdn.port()}/`),
+      https: () => getConfig('servers.cdn.https', false)
     }
   },
   entry: () => getConfig('entry'),

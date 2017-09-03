@@ -12,19 +12,19 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "yoshi-babel": "latest",
-    "yoshi-clean": "latest",
-    "yoshi-copy": "latest",
-    "yoshi-eslint": "latest",
-    "yoshi-less": "latest",
-    "yoshi-maven-statics": "latest",
-    "yoshi-petri": "latest",
-    "yoshi-sass": "latest",
-    "yoshi-stylelint": "latest",
-    "yoshi-tslint": "latest",
-    "yoshi-typescript": "latest",
-    "yoshi-update-node-version": "latest",
-    "yoshi-wnpm-release": "latest"
+    "yoshi-babel": "~1.0.0",
+    "yoshi-clean": "~1.0.0",
+    "yoshi-copy": "~1.0.0",
+    "yoshi-eslint": "~1.0.0",
+    "yoshi-less": "~1.0.0",
+    "yoshi-maven-statics": "~1.0.0",
+    "yoshi-petri": "~1.0.0",
+    "yoshi-sass": "~1.0.0",
+    "yoshi-stylelint": "~1.0.0",
+    "yoshi-tslint": "~1.0.0",
+    "yoshi-typescript": "~1.0.0",
+    "yoshi-update-node-version": "~1.0.0",
+    "yoshi-wnpm-release": "~1.0.0"
   },
   "devDependencies": {
     "eslint": "~3.19.0",

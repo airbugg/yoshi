@@ -30,7 +30,7 @@
     "require-reload": "~0.2.2",
     "trier-promise": "~1.0.1",
     "velocity": "~0.7.2",
-    "yoshi": "latest"
+    "yoshi": "~1.1.0"
   },
   "dependencies": {
     "babel-polyfill": "~6.23.0",
